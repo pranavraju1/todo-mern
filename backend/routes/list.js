@@ -54,7 +54,11 @@ router.post("/deleteTask/:id", async (req, res) => {
 
 //getTask
 router.get("/getTasks/:id", async (req, res) => {
-  const list = await List.find({ user: req.params.id });
-  res.status(200).json({ list });
+  const list = await List.find({ user: req.params.id }).sort({ createdAt: -1 }); //created first will come first
+  if (list.length !== 0) {
+    res.status(200).json({ list });
+  } else {
+    res.status(200).json({ message: "No Tasks" });
+  }
 });
 module.exports = router;
