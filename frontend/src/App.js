@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Todo from "./components/todo/Todo";
 const App = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/todo" element={<Todo />} />
         </Routes>
       </Router>
       {/* <Home /> */}
