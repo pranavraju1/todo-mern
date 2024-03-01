@@ -1,0 +1,16 @@
+.signup{
+  width: 100%;
+  height: 100vh;
+}
+.column{
+  height: 100vh;
+}
+.sign-up-heading{
+  font-size: 100px;
+  color: rgb(255, 0, 0, 0.836);
+}
+.btn{
+  background-color: rgb(255, 0, 0, 0.836);
+  color: white;
+  font-weight: bold;
+}
