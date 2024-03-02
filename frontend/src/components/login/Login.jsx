@@ -58,7 +58,7 @@ const Login = () => {
                 value={inputs.password}
               />
               <button className="btn" onClick={submit}>
-                Signup
+                Login
               </button>
             </div>
           </div>
