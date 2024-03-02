@@ -10,12 +10,12 @@ router.post("/register", async (req, res) => {
     const hashedpassword = bcrypt.hashSync(password);
     const user = new User({ email, username, password: hashedpassword });
     await user.save().then(() => {
-      return res.status(200).json({ user: user });
+      return res.status(200).json({ message: "Sign Up Successfull" });
     });
   } catch (err) {
     console.log(err.message);
     return res
-      .status(400)
+      .status(200)
       .json({ message: "User already exists", error: err.message });
   }
 });
@@ -25,21 +25,21 @@ router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-      return res.status(400).json({ message: "Please Sign Up First" });
+      return res.status(200).json({ message: "Please Sign Up First" });
     }
     const isPasswordMatch = bcrypt.compareSync(
       req.body.password,
       user.password
     );
     if (!isPasswordMatch) {
-      return res.status(400).json({ message: "Wrong password" });
+      return res.status(200).json({ message: "Wrong password" });
     }
     const { password, ...others } = user._doc; //give me everyting except the password
     return res.status(200).json({ others });
   } catch (err) {
     console.log(err.message);
     return res
-      .status(400)
+      .status(200)
       .json({ message: "User already exists", error: err.message });
   }
 });
