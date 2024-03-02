@@ -6,7 +6,18 @@ import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Todo from "./components/todo/Todo";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "./store";
 const App = () => {
+  const dispatch = useDispatch();
+  // when reload to remember user is logged in
+  useEffect(() => {
+    const id = sessionStorage.getItem("id");
+    if (id) {
+      dispatch(authActions.login());
+    }
+  }, []);
   return (
     <>
       <Router>

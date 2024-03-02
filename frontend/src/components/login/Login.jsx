@@ -2,10 +2,12 @@ import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { authActions } from "../../store";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const history = useNavigate();
-
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -21,7 +23,8 @@ const Login = () => {
     await axios
       .post("http://localhost:1000/api/v1/login", inputs)
       .then((response) => {
-        console.log(response.data.others._id);
+        sessionStorage.setItem("id", response.data.others._id);
+        dispatch(authActions.login());
         history("/todo");
         // if (response.data.message === "User already exists") {
         //   alert(response.data.message);
