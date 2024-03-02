@@ -44,12 +44,10 @@ const Todo = () => {
     await axios
       .delete(`http://localhost:1000/api/v2/deleteTask/${Cardid}`, {
         data: { id: id },
-      })
+      }) //connecting backend to delete task
       .then((res) => {
         toast.success("Todo Deleted");
       });
-    // array.splice(id, "1");
-    // setArray([...array]);
   };
 
   const display = (value) => {
